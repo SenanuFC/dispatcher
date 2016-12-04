@@ -3,6 +3,7 @@
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
     'ngRoute',
+    'myApp.view0',
     'myApp.view1',
     'myApp.view2',
     'myApp.view3',
@@ -13,7 +14,7 @@ angular.module('myApp', [
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
     $locationProvider.hashPrefix('!');
 
-    $routeProvider.otherwise({redirectTo: '/view1'});
+    $routeProvider.otherwise({redirectTo: '/view0'});
 }])
 // .factory('ProductService', [function(){
 //     var products=[];
@@ -97,7 +98,7 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
                 alert("Fill all fields");
             }
             else{
-                if($scope.checkDuplicateDispatcher(obj.username)) {
+                if(!$scope.checkDuplicateDispatcher(obj.username)) {
                     $rootScope.dispatchers.push(obj);
                     $scope.save('dispatchers', $rootScope.dispatchers);
                     $rootScope.dispatchers = $scope.load('dispatchers');
@@ -186,8 +187,9 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
         }
 
         $scope.checkDuplicateDispatcher = function(username){
+            var arr =  $rootScope.dispatchers;
             for (var i = 0; i < $rootScope.dispatchers.length; i++){
-                if(arr[i].username==u ){
+                if(arr[i].username==username ){
                     i= arr.length-1;
                     console.log("found user");
                     return true;
