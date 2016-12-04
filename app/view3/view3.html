@@ -1,0 +1,19 @@
+<div ng-controller="appCtrl">
+  <h2 ng-show="!products.length">No Packages to Assign</h2>
+  <form class="pure-form">
+    <fieldset>
+      <ul ng-repeat="p in products">
+
+        <li>
+          <span> <b>{{p.package}}</b> to <b>{{p.destination}}</b> from <b>{{p.requester}}</b> </span>
+          <select ng-model="selectedDispatcher">
+            <option ng-repeat="d in dispatchers track by $index" value="{{d}}">{{d.username}}</option>
+          </select>
+          <button class=" pure-button button-success" ng-click="assignDispatcher(p, selectedDispatcher)">Assign</button>
+        </li>
+      </ul>
+    </fieldset>
+  </form>
+
+  {{assignedDispatches | json}}
+</div>

@@ -1,0 +1,37 @@
+<div ng-controller="appCtrl">
+  <div class="row">
+    <div> Sign in as One of the Dispatchers</div>
+    <form name="loginDispatcherForm" class="pure-form">
+      <fieldset>
+        <input type="text" name="username" ng-model="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password" ng-model="password">
+        <button class="pure-button button-success" ng-click="getDispatches(username, password)">Login</button>
+      </fieldset>
+    </form>
+
+  </div>
+  <legend ng-show="selectedDispatcher">Logged in as {{selectedDispatcher.username}}</legend>
+  <legend ng-show="!selectedAssignments.length">No Packages to Deliver </legend>
+  <legend ng-show="selectedAssignments.length">Packages to Deliver: </legend>
+  <ul ng-repeat="u in selectedAssignments">
+    <div class="row">
+      <form class="pure-form">
+        <fieldset>
+          <label>
+            <b>{{u.product.package}}</b> <i>to</i> <b>{{u.product.destination}}</b>
+          </label>
+          <input type="text" ng-model="status" placeholder="Delivery Status">
+
+          <button class="pure-button" ng-click="updateAssignment(u, status)">Save</button>
+          <button class="pure-button" ng-click='updateAssignment(u, "Delivered")'>Complete</button>
+          </li>
+        </fieldset>
+      </form>
+    </div>
+  </ul>
+
+</div>
+
+</div>
+
+

@@ -1,0 +1,53 @@
+<div id="main" ng-controller="appCtrl">
+    <div class="content">
+
+    <form name="packageForm" class="pure-form pure-form-aligned">
+        <div class="pure-control-group">
+            <label>Date</label>
+            <input type="date" name="date" ng-model="sample.date" ng-required="required">
+        </div>
+        <div class="pure-control-group">
+            <label>Package Detail:</label>
+            <input name="package" type="text" ng-model="sample.package" ng-required="required">
+        </div>
+        <div class="pure-control-group">
+            <label>Requester</label>
+            <input name="requester" type="text" ng-model="sample.requester" ng-required="required">
+        </div>
+        <div class="pure-control-group">
+            <label>Destination</label>
+            <input name="destination" type="text" ng-model="sample.destination" ng-required="required">
+        </div>
+        <div class="pure-control-group">
+            <input type="reset" class="button-warning pure-button" ng-click="reset()" value="Reset" />
+            <button name="submit" class="pure-button pure-button-primary" ng-click="saveProduct(sample)">Submit Request</button>
+            <button name="memory" class="button-error pure-button" ng-click="clearMemory()">Clear Memory</button>
+        </div>
+    </form>
+
+    <br/>
+    <div ng-show="products.length" class="row">
+        <table class="pure-table">
+            <thead>
+            <tr>
+                <th>Date</th>
+                <th>Package</th>
+                <th>Requester</th>
+                <th>Destination</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="a in products track by $index">
+                <td>{{a.date}}</td>
+                <td>{{a.package}}</td>
+                <td>{{a.requester}}</td>
+                <td>{{a.destination}}</td>
+            </tr>
+
+        </table>
+    </div>
+    <pre>{{sample | json}}</pre>
+    <pre>{{products | json}}</pre>
+        </div>
+</div>

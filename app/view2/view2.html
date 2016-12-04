@@ -1,0 +1,49 @@
+<div ng-controller="appCtrl">
+  <form class="pure-form pure-form-aligned">
+
+    <div class="pure-control-group">
+      <label>First Name:</label>
+      <input name="firstname" type="text" ng-model="sample.firstname">
+    </div>
+    <div class="pure-control-group">
+      <label>Last Name:</label>
+      <input name="lastname" type="text" ng-model="sample.lastname">
+    </div>
+    <div class="pure-control-group">
+      <label>Username:</label>
+      <input name="username" type="text" ng-model="sample.username">
+    </div>
+    <div class="pure-control-group">
+      <label>Password:</label>
+      <input name="password" type="password" ng-model="sample.password">
+    </div>
+    <div class="pure-control-group">
+      <input type="reset" class="button-warning pure-button" type="button" ng-click="reset()" value="Reset" />
+      <button class="pure-button pure-button-primary" name="submit" ng-click="saveDispatchers(sample)">Submit Request</button>
+    </div>
+  </form>
+
+
+  <br/>
+  <div ng-show="dispatchers.length" class="row">
+    <table class="pure-table">
+      <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="a in dispatchers track by $index">
+        <td>{{a.firstname}}</td>
+        <td>{{a.lastname}}</td>
+        <td>{{a.username}}</td>
+      </tr>
+
+    </table>
+  </div>
+  <pre>{{sample | json}}</pre>
+  <pre>{{dispatchers | json}}</pre>
+</div>
